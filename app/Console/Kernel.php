@@ -24,7 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        dealSsqData::update();
+
+        $schedule->call(function () {
+            dealSsqData::update();
+        }) ->hourly();
         // $schedule->command('inspire')
         //          ->hourly();
     }

@@ -36,6 +36,9 @@ class dealSsqData
                 $ok = SsqModel::updateOrCreate(['issue'=>$data['issue']],$data);
                 if(!$ok) {
                     echo "创建失败" . $data['issue'] . "\r\n";
+                    \Mail::raw('采集双色球失败了！！！', function ($message) {
+                        $message->to('563808802@qq.com','管理员')->subject('意境吧-彩票-采集');
+                    });
                 }else{
                     echo $data['issue'] . "\r\n";
                 }

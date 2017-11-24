@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('-test', function () {
-
-
+Route::get('/', 'Web\IndexController@index');
+Route::get('example', function () {
+    return view('example');
 });

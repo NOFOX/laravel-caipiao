@@ -42,4 +42,26 @@ class SsqModel extends BaseModel
         'second_prize'
     ];
 
+    public function singleRand() {
+        $arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33];
+        $arr1 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+
+        $red = array_rand($arr,6);
+        $blue = array_rand($arr1,1);
+        $re['blue'] = $arr[$blue];
+        foreach ($red as $key=>$item){
+            $index= (string)$key+1;
+            $re["red$index"] = $arr[$item];
+        }
+        return  (object)($re);
+    }
+    public function rand($num=5){
+        $arr = [];
+        for ($i=0;$i<$num;$i++) {
+            $arr[] = $this->singleRand();
+        }
+        return $arr;
+    }
+
+
 }
